@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Ionic Demo App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  This is a demo app with Ionic 3.
+  <ion-fab right bottom>
+    <a ion-fab color="primary" (click)="takePhoto()"><ion-icon name="camera"></ion-icon></a>
+  </ion-fab>
+
+  <ion-card *ngFor="let picUrl of pictures; let i=index">
+    <img src="{{ picUrl }}"/>
+    <ion-card-content>
+      <ion-card-title>
+        Captured pic {{i+1}}
+      </ion-card-title>
+      <p>
+        A good snapshot keeps a moment from running away.
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
