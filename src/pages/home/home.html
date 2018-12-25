@@ -1,14 +1,45 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Ionic Blank
+      Ionic App
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  This is a demo app with Ionic 3 plugin examples.
+  <ion-fab right bottom>
+    <a ion-fab color="primary" (click)="takePhoto()"><ion-icon name="camera"></ion-icon></a>
+  </ion-fab>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Enter Text</ion-label>
+      <ion-input type="text" [(ngModel)]="encodedText"></ion-input>
+      
+    </ion-item>
+    <button ion-button (click)="encodeData()" color="primary">Encode Text</button>
+  
+    <ion-item>
+        <button ion-button (click)="scanBarcode()" color="primary">Scan Barcode</button>
+        <div *ngIf="scannedData.text">
+          <label>Barcode Value is: </label>
+          <span> {{scannedData.text}}</span>
+        </div>    
+    </ion-item>
+  
+  </ion-list>
+  
+  <ion-card *ngFor="let picUrl of pictures; let i=index">
+    <img src="{{ picUrl }}"/>
+    <ion-card-content>
+      <ion-card-title>
+        Captured pic {{i+1}}
+      </ion-card-title>
+      <p>
+        A good snapshot keeps a moment from running away.
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
