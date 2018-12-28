@@ -15,7 +15,7 @@ export class HomePage implements OnInit {
   //options for BarcodeScanner
   barcodeScannerOptions: BarcodeScannerOptions;
 
-  //encoded data and text
+  //encode data and text
   encodedText: string = '';
   encodedData: any = {};
   scannedData: any = {};
@@ -28,28 +28,39 @@ export class HomePage implements OnInit {
   }
 
   scanBarcode() {
+    //scan barcode
     this.barcodeScannerOptions = {
       prompt: 'Scan barcode'
     }
 
     this.barcodeScanner.scan(this.barcodeScannerOptions).then((responseData) => {
-      this.scannedData = responseData;
+      if(responseData.cancelled){
+        this.showAlert('Alert', 'No barcode scan');
+      }
+      else{
+        this.scannedData = responseData;
+      }
     }, (err) => {
-      this.displayErrorAlert(err);
+      this.showAlert('Error', err);
     });
   }
 
   encodeData() {
-    this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, this.encodedText).then((responseData) => {
-      this.encodeData = responseData;
-    }, (err) => {
-      this.displayErrorAlert(err)
-    });
+    //encode text to barcode
+    if(this.encodedText.trim()!=""){
+      this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, this.encodedText).then((responseData) => {
+        this.encodeData = responseData;
+      }, (err) => {
+        this.showAlert('Error', err);
+      });  
+    }
+    else{
+      this.showAlert('Alert', 'Please enter text to encode');
+    }
   }
 
   takePhoto() {
     // Take picture using camera plugin with its options
-
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL ,
@@ -63,16 +74,16 @@ export class HomePage implements OnInit {
       this.pictures.push('data:image/jpeg;base64,' + imageData);
       localStorage.setItem('pictures', JSON.stringify(this.pictures));
      }, (err) => {
-      this.displayErrorAlert(err);
+      this.showAlert('Alert', err);
      });
     
   }
 
-  displayErrorAlert(err){
-    // show alert if any error occurred while capture images
+  showAlert(alertType, alertMessage){
+    // show alert with message
     let alert = this.alertCtrl.create({
-       title: 'Error',
-       subTitle: err,
+       title: alertType,
+       subTitle: alertMessage,
        buttons: ['OK']
      });
      alert.present();

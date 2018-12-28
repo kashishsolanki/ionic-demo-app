@@ -7,30 +7,29 @@
 </ion-header>
 
 <ion-content padding>
-  This is a demo app with Ionic 3 plugin examples.
   <ion-fab right bottom>
     <a ion-fab color="primary" (click)="takePhoto()"><ion-icon name="camera"></ion-icon></a>
   </ion-fab>
 
   <ion-list>
+    <ion-list-header>Barcode Scanner Example</ion-list-header>
 
     <ion-item>
       <ion-label floating>Enter Text</ion-label>
       <ion-input type="text" [(ngModel)]="encodedText"></ion-input>
-      
     </ion-item>
-    <button ion-button (click)="encodeData()" color="primary">Encode Text</button>
-  
+
+    <button ion-button (click)="encodeData()" color="primary"><ion-icon name="barcode"></ion-icon>&nbsp;&nbsp;Encode Text </button>
+    <button ion-button (click)="scanBarcode()" color="primary"><ion-icon name="qr-scanner"></ion-icon>&nbsp;&nbsp;Scan Barcode </button>
+    
     <ion-item>
-        <button ion-button (click)="scanBarcode()" color="primary">Scan Barcode</button>
-        <div *ngIf="scannedData.text">
-          <label>Barcode Value is: </label>
-          <span> {{scannedData.text}}</span>
-        </div>    
+      <div *ngIf="scannedData.text">
+        <label>Barcode Value is: </label>
+        <span> {{scannedData.text}}</span>
+      </div>
     </ion-item>
-  
   </ion-list>
-  
+
   <ion-card *ngFor="let picUrl of pictures; let i=index">
     <img src="{{ picUrl }}"/>
     <ion-card-content>
