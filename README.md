@@ -15,4 +15,4 @@ This project was generated with Ionic CLI version 3.4.0 and Cordova CLI version 
 3. Run it in browser `ionic cordova run browser` to check with CameraMock.
 4. To check with android, run with command `ionic cordova run android` or build APK with `ionic cordova build android`.
 
-APK Dropped link: https://drive.google.com/file/d/1rBA2LxowgJmtU_-3l_57wyvy-ogmoQ3Y/view?usp=sharing
+APK link: https://drive.google.com/file/d/1z2qefsLtsCqwQvprwdtq53IWdYD3_N8n/view?usp=sharing
