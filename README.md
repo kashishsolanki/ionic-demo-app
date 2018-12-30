@@ -8,6 +8,8 @@ This project was generated with Ionic CLI version 3.4.0 and Cordova CLI version 
 * Ionic native Camera Plugin integration to capture and show picture and also save in album and in localstorage.
 * Use some of UI components like, card, button/fab button, icons and AlertController.
 * Integrated Ionic native barcodescanner plugin to encode text and scan barcode.
+* Implemented custom directive and pipe.
+* Implemented singup and login module with page navigation. 
 
 ## Installation:
 1. [For install Ionic Cordova](https://ionicframework.com/docs/intro/installation/)
@@ -15,4 +17,4 @@ This project was generated with Ionic CLI version 3.4.0 and Cordova CLI version 
 3. Run it in browser `ionic cordova run browser` to check with CameraMock.
 4. To check with android, run with command `ionic cordova run android` or build APK with `ionic cordova build android`.
 
-APK link: https://drive.google.com/file/d/1z2qefsLtsCqwQvprwdtq53IWdYD3_N8n/view?usp=sharing
+APK link: https://drive.google.com/file/d/1C_VIYs8VIlkU4bYcfjc6l4E8oF-1U8Kn/view?usp=sharing

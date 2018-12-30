@@ -39,24 +39,32 @@ export class LoginPage {
 
     if(this.loginForm.valid) {
       //allow to login and show TabsPage if username and passwored are correct
-      let users = JSON.parse(localStorage.getItem('users'));
-      let userListFilterPipe = new UserListFilterPipe();
-      let isRegisteredUser =  userListFilterPipe.transform(users, this.loginForm.value.username);
-      if(isRegisteredUser.length > 0 && (isRegisteredUser[0].password.trim() == this.loginForm.value.password)) {
-        localStorage.setItem('isLogin', 'true');
-        this.navCtrl.setRoot(TabsPage);
+      if(localStorage.getItem('users') != undefined){
+        let users = JSON.parse(localStorage.getItem('users'));
+        let userListFilterPipe = new UserListFilterPipe();
+        let isRegisteredUser =  userListFilterPipe.transform(users, this.loginForm.value.username);
+        if(isRegisteredUser.length > 0 && (isRegisteredUser[0].password.trim() == this.loginForm.value.password)) {
+          localStorage.setItem('isLogin', 'true');
+          this.navCtrl.setRoot(TabsPage);
+        }
+        else{
+          this.showToast();
+        }
       }
       else{
-        //show toast if username or password are incorrect
-        const toast = this.toastCtrl.create({
-          message: 'Invalid Username and password',
-          duration: 2000,
-          position: 'bottom'
-        });
-        toast.present();
+        this.showToast();
       }
-
     }
+  }
+
+  showToast(){
+    //show toast if username or password are incorrect
+    const toast = this.toastCtrl.create({
+      message: 'Invalid Username and password',
+      duration: 2000,
+      position: 'bottom'
+    });
+    toast.present();
   }
 
 }
