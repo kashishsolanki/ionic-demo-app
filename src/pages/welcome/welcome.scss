@@ -1,0 +1,46 @@
+page-welcome {
+    .welcome-img{
+        width: 242px;
+        left: 80px;
+        top: 60px;
+        position: absolute;
+    }
+    .welcome-text-h2{
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        top: 45%;
+        left: 15%;
+        margin-left: -60px;
+        margin-top: -25px;
+    }
+    .welcome-text-p{
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        top: 50%;
+        left: 15%;
+        margin-left: -60px;
+        margin-top: -25px;
+    }
+    .content{
+        background-color: #6600cc;
+        color: white;
+    }
+    .signup-btn{
+        bottom: 30px;
+        position: absolute;
+        width: 150px;
+        right: 35px;
+        background-color: #8000ff;
+    }   
+    .login-btn{
+        bottom: 30px;
+        position: absolute;
+        width: 150px;
+        left: 32px;
+        background-color: #8000ff;
+    }
+}

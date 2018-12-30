@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>SignUp</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form [formGroup]="signupForm">
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input formControlName="name" type="text"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!signupForm.controls.name.valid && (signupForm.controls.name.dirty || isSubmitClick)">
+        <p class="err-msg">Please enter name</p>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!signupForm.controls.email.valid && (signupForm.controls.email.dirty || isSubmitClick)">
+        <p class="err-msg">Please enter valid email</p>
+      </ion-item>
+        
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input formControlName="username" type="text"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!signupForm.controls.username.valid && (signupForm.controls.username.dirty || isSubmitClick)">
+        <p class="err-msg">Please enter valid Username</p>
+      </ion-item>
+        
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!signupForm.controls.password.valid && (signupForm.controls.password.dirty || isSubmitClick)">
+        <p class="err-msg">Please enter valid password between 6-32 characters</p>
+      </ion-item>
+    </form>
+  </ion-list>
+
+  <button ion-button color="primary" block (click)="signup()">Signup</button>
+</ion-content>
